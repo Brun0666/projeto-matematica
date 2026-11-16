@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Unidade do Portal ENEM: equações, inequações e sistemas, com balança interativa, exemplo resolvido, questão estilo ENEM, exercícios e quiz.">
+<meta name="theme-color" content="#2b0f63">
+<title>Equações, inequações e sistemas | Portal ENEM</title>
+<style>
+:root{color-scheme:light dark;--ink:#1e1038;--muted:#5d4a86;--deep:#2b0f63;--deep2:#3d1a8a;--violet:#6d28d9;--sky:#4cc9f0;--paper:#f6f2fc;--card:#fff;--line:#ddd0f2;--tint:#efe8fb;--ok:#0b7a64;--bad:#b3261e;--shadow:0 16px 40px rgba(43,15,99,.09);--head:"Avenir Next","Segoe UI",system-ui,sans-serif;--body:Georgia,"Times New Roman",serif}
+@media (prefers-color-scheme:dark){:root{--ink:#efe8fb;--muted:#bcaedc;--deep:#0b0520;--deep2:#1d0f45;--violet:#a98bff;--paper:#150b2b;--card:#21143f;--line:#3d2a66;--tint:#2b1a52;--ok:#4fd1b0;--bad:#ff8a80;--shadow:none}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{margin:0;background:var(--paper);color:var(--ink);font:1.05rem/1.65 var(--body)}
+a{color:var(--violet)}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+h1,h2,h3,.kicker,.btn,.toc a,.eyebrow{font-family:var(--head)}
+h1,h2,h3,p{margin-top:0}
+.skip{position:absolute;left:12px;top:-60px;z-index:20;padding:10px 14px;color:#fff;background:var(--deep);border-radius:8px}
+.skip:focus{top:12px}
+.math{font-family:"Cambria Math",Georgia,serif;background:var(--tint);padding:1px 7px;border-radius:4px;white-space:nowrap}
+.w{width:min(1180px,calc(100% - 44px));margin:auto}
+.topbar{background:#1a0846;color:#fff;border-bottom:1px solid rgba(255,255,255,.12)}
+.topbar .w{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font:800 .95rem var(--head);letter-spacing:.09em}
+.mark{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:var(--sky);color:#1a0846;font:800 1.3rem var(--head)}
+.brand small{display:block;margin-top:3px;color:#cdbdf2;font:500 .7rem var(--head);letter-spacing:.02em}
+.crumb{color:#cdbdf2;font:.85rem var(--head)}.crumb b{color:#fff}
+.tag{padding:6px 12px;border:1px solid rgba(255,255,255,.25);border-radius:99px;color:#e4d9fb;font:.75rem var(--head);white-space:nowrap}
+.hero{background:linear-gradient(115deg,var(--deep) 10%,var(--deep2) 100%);color:#fff;overflow:hidden}
+.hero .w{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;padding:58px 0 64px}
+.eyebrow{display:inline-flex;gap:9px;align-items:center;color:var(--sky);font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--sky)}
+h1{font-size:clamp(2.3rem,5.4vw,4.1rem);font-weight:800;line-height:1.03;letter-spacing:-.035em;margin:14px 0 16px}
+h1 em{font-style:normal;color:var(--sky)}
+.lead{color:#dccff5;font-size:1.1rem;max-width:560px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.btn{min-height:46px;display:inline-flex;align-items:center;justify-content:center;padding:0 18px;border-radius:12px;border:1px solid transparent;text-decoration:none;font-size:.9rem;font-weight:800;cursor:pointer}
+.btn-p{background:var(--sky);color:#1a0846}.btn-g{color:#fff;border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.05)}
+.meta{display:flex;flex-wrap:wrap;gap:18px;margin-top:22px;color:#cdbdf2;font:.8rem var(--head)}
+.scale{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);border-radius:26px;padding:18px;text-align:center;max-width:440px;margin:auto;width:100%}
+.stage{position:relative;height:200px}
+.beam{position:absolute;top:34px;left:17%;right:17%;height:8px;background:var(--sky);border-radius:4px;transform:rotate(var(--a,0deg));transition:transform .35s}
+.pan{position:absolute;top:4px;width:112px;margin-left:-56px;padding-top:56px;transform-origin:50% 0;transform:rotate(calc(var(--a,0deg)*-1));transition:transform .35s}
+.pan.l{left:0}.pan.r{left:100%}
+.pan::before{content:"";position:absolute;top:0;left:50%;width:2px;height:56px;background:var(--sky)}
+.tray{display:block;background:#fff;color:#2b0f63;border-radius:6px 6px 46px 46px;padding:8px 4px 16px;font:700 1.15rem/1.2 var(--head)}
+.tray small{display:block;font:600 .75rem var(--head);color:#5d4a86}
+.post{position:absolute;left:50%;top:38px;width:6px;height:150px;margin-left:-3px;background:rgba(255,255,255,.35)}
+.base{position:absolute;left:50%;bottom:0;width:130px;margin-left:-65px;height:10px;border-radius:5px;background:rgba(255,255,255,.35)}
+.xv{font:800 2rem var(--head);margin:4px 0 0}
+.scale label{display:block;font:.9rem var(--head);color:#dccff5;margin-bottom:6px}
+.scale input{width:100%;accent-color:var(--sky)}
+#smsg{min-height:3.2em;margin:8px 0 0;font-size:.98rem}
+.wrap{display:grid;grid-template-columns:210px minmax(0,1fr);gap:44px;align-items:start;padding:50px 0 76px}
+.toc{position:sticky;top:20px;padding:16px 12px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.toc p{margin:0 8px 8px;color:var(--muted);font:800 .65rem var(--head);letter-spacing:.13em;text-transform:uppercase}
+.toc a{display:block;padding:7px 9px;border-radius:9px;color:var(--muted);font-size:.8rem;line-height:1.35;text-decoration:none}
+.toc a:hover{background:var(--tint);color:var(--ink)}
+.toc b{display:inline-block;width:26px;font-size:.65rem;color:var(--violet)}
+.lesson{min-width:0}
+.sec{margin-bottom:24px;padding:30px;border:1px solid var(--line);border-radius:22px;background:var(--card);box-shadow:var(--shadow)}
+.kicker{margin-bottom:8px;color:var(--violet);font-size:.72rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;line-height:1.15;letter-spacing:-.02em;margin-bottom:14px}
+h3{font-size:1.05rem;margin-bottom:8px}
+.sec p:last-child{margin-bottom:0}
+.grid3,.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.obj{padding:16px;border-radius:15px;background:var(--tint)}
+.obj b{display:block;font:800 1.15rem var(--head);color:var(--violet);margin-bottom:2px}
+.obj p{margin:0;font-size:.95rem;line-height:1.45}
+.cc{padding:16px 16px 10px;border:1px solid var(--line);border-top:6px solid var(--violet);border-radius:6px 6px 16px 16px;font-size:.95rem}
+.cc.c2{border-top-color:var(--sky)}.cc.c3{border-top-color:#e879f9}
+.cc p{margin:.4rem 0}
+.alert,.ok{padding:10px 14px;border-radius:0 10px 10px 0;margin:12px 0;font-size:.95rem;background:var(--tint)}
+.alert{border-left:5px solid var(--bad)}.ok{border-left:5px solid var(--ok)}
+table{border-collapse:collapse;margin:8px 0;font-size:.95rem}
+td,th{border:1px solid var(--line);padding:6px 16px;text-align:center}th{background:var(--tint)}
+.panel{background:var(--deep);color:#f4effd;border-color:transparent}
+.panel .kicker{color:var(--sky)}.panel .math{background:rgba(255,255,255,.14)}
+.panel .ok{background:rgba(255,255,255,.1);border-left-color:#5eead4}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;padding-left:2.5rem;position:relative;margin:.9rem 0}
+.steps li::before{content:counter(s);position:absolute;left:0;top:.05rem;width:1.8rem;height:1.8rem;border-radius:50%;background:var(--sky);color:#1a0846;font:800 .95rem/1.8rem var(--head);text-align:center}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0}
+.chips span{padding:7px 12px;border:1px solid rgba(255,255,255,.28);border-radius:99px;font:.8rem var(--head)}
+.question{margin-top:16px;padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--paper)}
+.label{display:inline-block;margin-bottom:10px;padding:5px 9px;border-radius:7px;background:var(--tint);color:var(--violet);font:800 .65rem var(--head);letter-spacing:.1em;text-transform:uppercase}
+.opts{display:grid;gap:9px;margin:14px 0 0;padding:0;list-style:none}
+.opts li{display:flex;gap:11px;padding:10px 13px;border:1px solid var(--line);border-radius:11px;background:var(--card);font-size:.95rem}
+.opts b{color:var(--violet);font-family:var(--head)}
+details{margin-top:12px;border-top:1px solid var(--line)}
+summary{width:fit-content;padding:12px 0 4px;color:var(--violet);cursor:pointer;font:800 .85rem var(--head)}
+.sol{padding-top:8px;font-size:.95rem}
+.ex{padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--paper);margin-top:12px}
+.ex p{margin:0;font-size:.97rem}.ex details{margin-top:8px}.ex summary{padding-top:10px}
+.ex b.n{display:inline-grid;place-items:center;width:26px;height:26px;margin-right:8px;border-radius:8px;background:var(--tint);color:var(--violet);font:800 .75rem var(--head)}
+.qq{margin:16px 0;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+.qq legend{padding:0 7px;font:700 .95rem var(--head)}
+.qc{display:grid;gap:6px;margin-top:6px}
+.qch{display:flex;gap:9px;padding:8px 10px;border-radius:9px;cursor:pointer;font-size:.95rem}
+.qch:hover{background:var(--tint)}.qch input{accent-color:var(--violet);margin-top:6px}
+.qf{display:none;margin-top:8px;padding:9px 12px;border-radius:9px;font-size:.92rem}
+.qf.show{display:block}.qf.c{background:rgba(11,122,100,.14);color:var(--ok)}.qf.i{background:rgba(179,38,30,.12);color:var(--bad)}
+.qa{display:flex;flex-wrap:wrap;align-items:center;gap:13px}
+.qa .btn{background:var(--violet);color:#fff}
+.score{display:none;margin-top:14px;padding:16px;border-radius:13px;background:var(--tint);font-weight:700}.score.show{display:block}
+.sum{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:16px 0 0}
+.sum div{padding:13px;border-radius:12px;background:var(--tint);font-size:.92rem}
+.src{display:flex;justify-content:space-between;gap:14px;padding:14px 15px;margin-top:11px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--violet)}
+.src:hover{background:var(--tint)}.src b{display:block;color:var(--ink);font:700 .9rem var(--head)}.src small{color:var(--muted)}
+.foot{padding:26px 22px;background:#1a0846;color:#cdbdf2;text-align:center;font:.8rem var(--head)}.foot a{color:var(--sky)}
+@media(max-width:880px){.hero .w{grid-template-columns:1fr}.wrap{grid-template-columns:1fr;gap:18px;padding-top:24px}.toc{position:static}.toc nav{display:flex;flex-wrap:wrap;gap:3px}}
+@media(max-width:650px){.crumb,.tag{display:none}.grid3,.trio,.sum{grid-template-columns:1fr}.sec{padding:22px 18px}.math{white-space:normal}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media print{.topbar,.cta,.toc,.qa,.scale{display:none!important}.wrap{display:block}.sec{box-shadow:none;break-inside:avoid}.hero{background:#fff;color:#000}h1 em{color:#000}.lead,.meta{color:#333}}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="topbar" id="topo"><div class="w">
+  <a class="brand" href="index.html" aria-label="Portal ENEM, voltar ao início"><span class="mark" aria-hidden="true">x</span><span>PORTAL ENEM<small>aprenda. pratique. avance.</small></span></a>
+  <div class="crumb"><b>Matemática</b> &nbsp;/&nbsp; Álgebra</div>
+  <span class="tag">UNIDADE 07</span>
+</div></header>
+
+<section class="hero" aria-labelledby="titulo"><div class="w">
+  <div>
+    <div class="eyebrow"><i></i> Matemática · Álgebra</div>
+    <h1 id="titulo">Equações, inequações e <em>sistemas.</em></h1>
+    <p class="lead">“Quanto custa cada item?”, “qual plano compensa?”, “quantos anos tem?”. Aprenda a transformar essas perguntas em contas e a conferir se a resposta faz sentido.</p>
+    <div class="cta"><a class="btn btn-p" href="#objetivos">Começar a aula ↓</a><a class="btn btn-g" href="#quiz">Ir direto ao quiz ↗</a></div>
+    <div class="meta"><span>◷ 12 min de leitura</span><span>▤ Ensino Médio</span><span>✦ Com balança e quiz interativos</span></div>
+  </div>
+  <div class="scale">
+    <div class="stage" aria-hidden="true"><div class="post"></div><div class="base"></div>
+      <div class="beam" id="beam">
+        <div class="pan l"><span class="tray"><small>3x + 5</small><b id="lv">11</b></span></div>
+        <div class="pan r"><span class="tray"><small>outro lado</small><b>20</b></span></div>
+      </div></div>
+    <div class="xv">x = <output id="xo">2</output></div>
+    <label for="xs">Arraste o x até equilibrar a equação 3x + 5 = 20</label>
+    <input type="range" id="xs" min="0" max="10" value="2">
+    <p id="smsg" aria-live="polite"></p>
+  </div>
+</div></section>
+
+<main class="w wrap" id="conteudo">
+<aside class="toc" aria-label="Navegação desta unidade"><p>Nesta unidade</p><nav>
+  <a href="#objetivos"><b>01</b>Objetivos</a><a href="#conceitos"><b>02</b>Conceitos</a><a href="#exemplo"><b>03</b>Exemplo resolvido</a>
+  <a href="#enem"><b>04</b>Conexão com o ENEM</a><a href="#resolvida"><b>05</b>Questão resolvida</a><a href="#exercicios"><b>06</b>Exercícios</a>
+  <a href="#quiz"><b>07</b>Quiz</a><a href="#resumo"><b>08</b>Revisão rápida</a><a href="#fontes"><b>09</b>Fontes</a>
+</nav></aside>
+
+<div class="lesson">
+<section class="sec" id="objetivos">
+  <p class="kicker">Antes de começar</p><h2>Ao final desta aula, você vai conseguir…</h2>
+  <div class="grid3">
+    <div class="obj"><b>Traduzir</b><p>um enunciado para equação, inequação ou sistema.</p></div>
+    <div class="obj"><b>Resolver</b><p>equações do 1º grau, inequações simples e sistemas 2×2.</p></div>
+    <div class="obj"><b>Conferir</b><p>a resposta no enunciado original, não só na conta.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="conceitos">
+  <p class="kicker">Ideia principal</p><h2>Os conceitos, um por vez</h2>
+  <div class="trio">
+    <article class="cc"><h3>Equação do 1º grau</h3>
+      <p>Igualdade com uma <strong>incógnita</strong> (o valor que não sabemos, geralmente <span class="math">x</span>). É como uma balança em equilíbrio: o que você faz de um lado, faz do outro.</p>
+      <p><span class="math">3x + 5 = 20</span> → <span class="math">3x = 15</span> → <span class="math">x = 5</span>.</p></article>
+    <article class="cc c2"><h3>Inequação do 1º grau</h3>
+      <p>Compara com <span class="math">&lt;</span>, <span class="math">&gt;</span>, <span class="math">≤</span> ou <span class="math">≥</span>. A resposta é um conjunto de valores. Ex.: <span class="math">2x + 1 &gt; 9</span> → <span class="math">x &gt; 4</span>.</p>
+      <div class="alert"><strong>Erro mais comum:</strong> ao multiplicar ou dividir por <strong>número negativo</strong>, o sinal inverte. <span class="math">−2x + 6 &gt; 14</span> → <span class="math">−2x &gt; 8</span> → <span class="math">x &lt; −4</span>. Teste: <span class="math">x = −5</span> dá 16, maior que 14 ✓.</div></article>
+    <article class="cc c3"><h3>Sistema 2×2</h3>
+      <p>Duas equações com <span class="math">x</span> e <span class="math">y</span>, verdadeiras ao mesmo tempo.</p>
+      <ul><li><strong>Substituição:</strong> isole uma incógnita e substitua na outra.</li>
+      <li><strong>Adição:</strong> some as equações para eliminar uma incógnita. <span class="math">x + y = 14</span> e <span class="math">x − y = 6</span> → <span class="math">x = 10</span>, <span class="math">y = 4</span>.</li></ul></article>
+  </div>
+  <h3 style="margin-top:22px">Como traduzir o enunciado</h3>
+  <table><tr><th>Na frase</th><th>Na matemática</th></tr>
+    <tr><td>“o dobro de um número”</td><td>2x</td></tr><tr><td>“cinco a mais que x”</td><td>x + 5</td></tr>
+    <tr><td>“no máximo 50”</td><td>≤ 50</td></tr><tr><td>“mais de 9”</td><td>&gt; 9</td></tr><tr><td>“pelo menos 9”</td><td>≥ 9</td></tr></table>
+</section>
+
+<section class="sec panel" id="exemplo">
+  <p class="kicker">Aprenda pelo caminho</p><h2>Exemplo resolvido: cadernos e canetas</h2>
+  <p>Na compra 1, 2 cadernos e 3 canetas custaram R$ 19. Na compra 2, 1 caderno e 2 canetas custaram R$ 11. Qual é o preço de cada item?</p>
+  <ol class="steps">
+    <li><strong>Defina as incógnitas:</strong> <span class="math">c</span> = preço do caderno (R$) e <span class="math">p</span> = preço da caneta (R$).</li>
+    <li><strong>Monte o sistema:</strong> <span class="math">2c + 3p = 19</span> e <span class="math">c + 2p = 11</span>.</li>
+    <li><strong>Isole <span class="math">c</span> na segunda:</strong> <span class="math">c = 11 − 2p</span>.</li>
+    <li><strong>Substitua na primeira:</strong> <span class="math">2(11 − 2p) + 3p = 19</span> → <span class="math">22 − p = 19</span> → <span class="math">p = 3</span>.</li>
+    <li><strong>Ache <span class="math">c</span>:</strong> <span class="math">c = 11 − 2·3 = 5</span>.</li>
+  </ol>
+  <div class="ok"><strong>Conferência:</strong> compra 1: 2·5 + 3·3 = 19 ✓. Compra 2: 5 + 2·3 = 11 ✓. <strong>Resposta:</strong> caderno R$ 5,00 e caneta R$ 3,00.</div>
+</section>
+
+<section class="sec panel" id="enem">
+  <p class="kicker">Estratégia de prova</p><h2>Como esse assunto aparece no ENEM?</h2>
+  <p>A prova raramente pede “resolva a equação”. O comum é uma situação do dia a dia em que você precisa montar o modelo. A parte difícil costuma ser <strong>ler e traduzir</strong>, não a conta.</p>
+  <div class="chips" aria-label="Contextos possíveis"><span>compras e preços</span><span>planos e tarifas</span><span>idades</span><span>divisão de quantias</span><span>misturas</span></div>
+  <p><strong>Estratégia:</strong> antes de calcular, escreva o que cada letra representa e a unidade (R$, anos, horas).</p>
+</section>
+
+<section class="sec" id="resolvida">
+  <p class="kicker">Questão resolvida</p><h2>Passo a passo, estilo ENEM</h2>
+  <div class="question">
+    <span class="label">Questão autoral · estilo ENEM</span>
+    <p style="font-weight:700">Uma academia oferece dois planos. O plano A cobra mensalidade de R$ 90 mais R$ 5 por aula. O plano B não tem mensalidade e cobra R$ 15 por aula. A partir de quantas aulas por mês o plano A passa a ser mais vantajoso?</p>
+    <ul class="opts">
+      <li><b>A</b><span>5 aulas</span></li><li><b>B</b><span>8 aulas</span></li><li><b>C</b><span>9 aulas</span></li>
+      <li><b>D</b><span>10 aulas</span></li><li><b>E</b><span>18 aulas</span></li>
+    </ul>
+    <details><summary>Ver resolução comentada</summary><div class="sol">
+      <p>Com <span class="math">n</span> aulas: plano A = <span class="math">90 + 5n</span> e plano B = <span class="math">15n</span>. A compensa quando <span class="math">90 + 5n &lt; 15n</span> → <span class="math">90 &lt; 10n</span> → <span class="math">n &gt; 9</span>.</p>
+      <p><strong>Resposta: D.</strong> Com 9 aulas há empate (R$ 135 nos dois), então A só vence com 10 (A = 140, B = 150).</p>
+      <p>Por que as outras falham: <strong>C</strong> é o empate, não vantagem. <strong>E</strong> vem de 90 ÷ 5, que esquece o preço por aula do plano B. Com 5 ou 8 aulas, o B é mais barato (75 contra 115, e 120 contra 130).</p>
+    </div></details>
+  </div>
+  <p class="meta" style="color:var(--muted);margin-top:14px;font-size:.85rem">Troquem ou acrescentem uma questão oficial do Inep, com ano, caderno e número.</p>
+</section>
+
+<section class="sec" id="exercicios">
+  <p class="kicker">Agora é com você</p><h2>Exercícios para praticar</h2>
+  <p>Tente resolver no caderno antes de abrir cada resposta.</p>
+  <article class="ex"><p><b class="n">1</b>Uma corrida de aplicativo custa R$ 4,00 de bandeirada mais R$ 2,50 por quilômetro. Ana pagou R$ 19,00. Quantos quilômetros ela percorreu?</p>
+    <details><summary>Conferir resposta comentada</summary><p><span class="math">4 + 2,5k = 19</span> → <span class="math">2,5k = 15</span> → <span class="math">k = 6</span>. Conferência: 4 + 15 = 19 ✓. <strong>6 km.</strong></p></details></article>
+  <article class="ex"><p><b class="n">2</b>Resolva a inequação <span class="math">5 − 3x ≥ 20</span>.</p>
+    <details><summary>Conferir resposta comentada</summary><p><span class="math">−3x ≥ 15</span>; ao dividir por −3 o sinal inverte: <strong>x ≤ −5</strong>. Teste: <span class="math">x = −6</span> dá 5 + 18 = 23 ≥ 20 ✓.</p></details></article>
+  <article class="ex"><p><b class="n">3</b>Uma locadora cobra, no plano A, R$ 20 fixos mais R$ 4 por hora; no plano B, R$ 8 por hora, sem taxa fixa. Para quantas horas o B é mais barato?</p>
+    <details><summary>Conferir resposta comentada</summary><p><span class="math">8h &lt; 20 + 4h</span> → <span class="math">4h &lt; 20</span> → <span class="math">h &lt; 5</span>. Em 5 horas empata (R$ 40). <strong>B compensa para menos de 5 horas.</strong></p></details></article>
+  <article class="ex"><p><b class="n">4</b>Numa sala há 14 estudantes. Há 6 meninos a mais do que meninas. Quantos meninos e quantas meninas?</p>
+    <details><summary>Conferir resposta comentada</summary><p><span class="math">x + y = 14</span> e <span class="math">x − y = 6</span>. Somando: <span class="math">2x = 20</span>, <span class="math">x = 10</span>, <span class="math">y = 4</span>. Conferência: 10 + 4 = 14 ✓ e 10 − 4 = 6 ✓. <strong>10 meninos e 4 meninas.</strong></p></details></article>
+  <article class="ex"><p><b class="n">5</b>Um pai tem o triplo da idade do filho. Daqui a 10 anos, a soma das idades será 76. Qual é a idade de cada um hoje?</p>
+    <details><summary>Conferir resposta comentada</summary><p>Filho <span class="math">x</span>, pai <span class="math">3x</span>: <span class="math">(x + 10) + (3x + 10) = 76</span> → <span class="math">4x = 56</span> → <span class="math">x = 14</span>. Conferência: 24 + 52 = 76 ✓. <strong>Filho 14 e pai 42 anos.</strong></p></details></article>
+</section>
+
+<section class="sec" id="quiz">
+  <p class="kicker">Checagem rápida</p><h2>Quiz: teste o que aprendeu</h2>
+  <p>Marque uma resposta em cada pergunta e clique em corrigir.</p>
+  <form id="qform"></form>
+</section>
+
+<section class="sec" id="resumo">
+  <p class="kicker">Para revisar depois</p><h2>Equações em 30 segundos</h2>
+  <div class="sum">
+    <div>✓ Defina as incógnitas e as unidades antes de montar a equação.</div>
+    <div>✓ Equação: faça a mesma operação dos dois lados até isolar <span class="math">x</span>.</div>
+    <div>✓ Inequação: o sinal inverte ao multiplicar ou dividir por negativo.</div>
+    <div>✓ Sistema: substituição ou adição para eliminar uma incógnita.</div>
+  </div>
+  <p style="margin-top:14px">Sempre confira a resposta no enunciado original.</p>
+</section>
+
+<section class="sec" id="fontes">
+  <p class="kicker">Para continuar estudando</p><h2>Fontes e leituras</h2>
+  <p>A questão resolvida desta unidade foi elaborada pela dupla para fins didáticos.</p>
+  <a class="src" href="https://www.gov.br/inep/pt-br/centrais-de-conteudo/acervo-linha-editorial/publicacoes-institucionais/avaliacoes-e-exames-da-educacao-basica/matrizes-de-referencia-enem" target="_blank" rel="noopener noreferrer"><span><b>Inep · Matriz de Referência do ENEM</b><small>Competências e habilidades de Matemática e suas Tecnologias</small></span><span aria-hidden="true">↗</span></a>
+  <a class="src" href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank" rel="noopener noreferrer"><span><b>Inep · Provas e gabaritos do ENEM</b><small>Questões oficiais de Matemática para praticar</small></span><span aria-hidden="true">↗</span></a>
+  <p style="margin-top:14px;font-size:.85rem;color:var(--muted)">Acrescentem aqui as demais fontes que a dupla consultou (livro didático, videoaulas, sites).</p>
+</section>
+</div>
+</main>
+
+<footer class="foot"><p><strong>PORTAL ENEM</strong> · Matemática · Unidade 07</p><a href="#topo">Voltar ao início ↑</a></footer>
+
+<script>
+(function(){
+  var s=document.getElementById("xs"),o=document.getElementById("xo"),beam=document.getElementById("beam"),
+      lv=document.getElementById("lv"),m=document.getElementById("smsg");
+  function upd(){
+    var x=+s.value,L=3*x+5,R=20;
+    o.textContent=x;lv.textContent=L;
+    beam.style.setProperty("--a",Math.max(-16,Math.min(16,-(L-R)*.9))+"deg");
+    m.textContent=L===R?"Equilibrou! 3·"+x+" + 5 = 20, então x = "+x+"."
+      :L<R?"3·"+x+" + 5 = "+L+". O lado direito (20) pesa mais: aumente x."
+      :"3·"+x+" + 5 = "+L+". O lado esquerdo passou de 20: diminua x.";
+  }
+  s.addEventListener("input",upd);upd();
+
+  var Q=[
+   {q:"Resolva 4x − 7 = 21. Qual é o valor de x?",o:["3,5","7","14","28"],a:1,
+    f:["Parece que você dividiu 14 por 4. Some 7 aos dois lados primeiro: 4x = 28.","Isso mesmo: 4x = 28, logo x = 7.","Você somou 7, mas dividiu 28 por 2 em vez de por 4.","Faltou dividir por 4: x = 28 ÷ 4."]},
+   {q:"Resolva a inequação −3x &gt; 12.",o:["x &gt; −4","x &lt; −4","x &gt; 4","x &lt; 4"],a:1,
+    f:["O sinal não pode continuar igual: dividir por −3 inverte a desigualdade.","Isso mesmo: 12 ÷ (−3) = −4 e o sinal inverte, x &lt; −4.","12 ÷ (−3) é −4, não 4.","O sinal está certo, mas 12 ÷ (−3) = −4."]},
+   {q:"Se x + y = 10 e x − y = 2, quanto vale x?",o:["4","5","6","8"],a:2,
+    f:["4 é o valor de y. Somando as equações: 2x = 12.","5 só seria x se os dois fossem iguais, mas x − y = 2.","Isso mesmo: 2x = 12, então x = 6 (e y = 4).","Teste: 8 + y = 10 daria y = 2, e 8 − 2 = 6, não 2."]},
+   {q:"2 camisetas e 1 bermuda custam R$ 100. 1 camiseta e 1 bermuda custam R$ 70. Quanto custa a bermuda?",o:["R$ 30","R$ 40","R$ 50","R$ 70"],a:1,
+    f:["R$ 30 é a camiseta: 100 − 70.","Isso mesmo: camiseta R$ 30, bermuda 70 − 30 = R$ 40. Conferência: 60 + 40 = 100.","Com bermuda a R$ 50, a primeira compra daria R$ 90.","R$ 70 é o preço das duas peças juntas."]},
+   {q:"Cada pizza custa R$ 12 e você tem R$ 50. Qual é o número máximo de pizzas que dá para comprar?",o:["3","4","5","17"],a:1,
+    f:["Dá para comprar mais: 3 pizzas custam R$ 36.","Isso mesmo: 12n ≤ 50 → n ≤ 4,16…, e n é inteiro, então n = 4.","5 pizzas custam R$ 60, mais do que você tem. Não arredonde para cima.","17 não tem relação com o problema. Monte 12n ≤ 50."]}
+  ];
+  var form=document.getElementById("qform");
+  form.innerHTML=Q.map(function(it,i){
+    return '<fieldset class="qq"><legend>'+(i+1)+'. '+it.q+'</legend><div class="qc">'+
+      it.o.map(function(t,k){return '<label class="qch"><input type="radio" name="q'+i+'" value="'+k+'"><span>'+t+'</span></label>';}).join("")+
+      '</div><div class="qf" id="f'+i+'" aria-live="polite"></div></fieldset>';
+  }).join("")+'<div class="qa"><button class="btn" type="submit">Corrigir quiz</button><span id="qs" role="status">Responda às cinco perguntas para corrigir.</span></div><div class="score" id="sc" role="status" aria-live="polite"></div>';
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var score=0,miss=0;
+    Q.forEach(function(it,i){
+      var sel=form.querySelector('input[name="q'+i+'"]:checked'),fb=document.getElementById("f"+i);
+      fb.className="qf show";
+      if(!sel){miss++;fb.classList.add("i");fb.textContent="Escolha uma alternativa.";return;}
+      var k=+sel.value,right=k===it.a;
+      if(right)score++;
+      fb.classList.add(right?"c":"i");
+      fb.innerHTML="<strong>"+(right?"Acertou. ":"Não foi dessa vez. ")+"</strong>"+it.f[k];
+    });
+    var st=document.getElementById("qs"),sc=document.getElementById("sc");
+    if(miss){st.textContent="Faltam "+miss+(miss===1?" resposta.":" respostas.");sc.classList.remove("show");return;}
+    st.textContent="Quiz corrigido.";
+    sc.textContent="Você acertou "+score+" de "+Q.length+". "+(score>=4?"Mandou bem! Agora tente questões oficiais do Inep.":"Releia o exemplo resolvido e os comentários dos exercícios, depois tente de novo.");
+    sc.classList.add("show");
+  });
+})();
+</script>
+</body>
+</html>
